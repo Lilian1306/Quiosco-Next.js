@@ -13,20 +13,31 @@ export default function OrderSummary() {
   const order = useStore((state) => state.order)
   const total = useMemo(() => order.reduce((total, item) => total + (item.quantity * item.price), 0) , [order])
 
-  const handleCreateOrder = (formData: FormData) => {
+  const handleCreateOrder = async (formData: FormData) => {
     const data = {
-      name: formData.get('name')
+      name: formData.get('name'),
+      total,
+      order
     }
 
+    
     const result = OrderSchema.safeParse(data)
+    console.log(result)
     if(!result.success){
       result.error.issues.forEach((issue) => {
          toast.error(issue.message)
       })
-    }
 
-    return 
-    createOrder()
+      return 
+    }
+    
+
+    const response =  await  createOrder(data)
+     if(response?.errors){
+      response.errors.forEach((issues) =>{
+        toast.error(issues.message)
+      })
+     }
   }
 
   return (
