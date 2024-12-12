@@ -3,6 +3,7 @@
 import { useStore } from '@/src/store'
 import ProductDetails from './ProductDetails'
 import { useMemo } from 'react'
+import { toast } from 'react-toastify'
 import { formatCurrency } from '@/src/utils'
 import { createOrder } from '@/actions/create-order-actions'
 import { OrderSchema } from '@/src/schema'
@@ -18,7 +19,11 @@ export default function OrderSummary() {
     }
 
     const result = OrderSchema.safeParse(data)
-    console.log(result)
+    if(!result.success){
+      result.error.issues.forEach((issue) => {
+         toast.error(issue.message)
+      })
+    }
 
     return 
     createOrder()
