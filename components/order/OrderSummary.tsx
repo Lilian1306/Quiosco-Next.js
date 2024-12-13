@@ -34,8 +34,8 @@ export default function OrderSummary() {
 
     const response =  await  createOrder(data)
      if(response?.errors){
-      response.errors.forEach((issues) =>{
-        toast.error(issues.message)
+      response.errors.forEach((issue) =>{
+        toast.error(issue.message)
       })
      }
   }
