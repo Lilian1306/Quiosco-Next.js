@@ -12,6 +12,7 @@ import { OrderSchema } from '@/src/schema'
 export default function OrderSummary() {
   const order = useStore((state) => state.order)
   const total = useMemo(() => order.reduce((total, item) => total + (item.quantity * item.price), 0) , [order])
+  const clearOrder = useStore((state) => state.clearOrder) // Reiniciar la orden
 
   const handleCreateOrder = async (formData: FormData) => {
     const data = {
@@ -38,7 +39,9 @@ export default function OrderSummary() {
         toast.error(issue.message)
       })
      }
-  }
+     toast.success('Pedido Realizado Correctamente')
+     clearOrder()  // Reiniciar la orden
+  }  
 
   return (
     <aside className='lg:h-screen lg:overflow-y-scroll md:-64 lg:w-96 p-5'>
