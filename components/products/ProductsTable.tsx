@@ -1,10 +1,10 @@
+import type { ProductWithCategory } from "@/app/admin/products/page"
 import { formatCurrency } from "@/src/utils"
-import type { Product } from "@prisma/client"
 import Link from "next/link"
 
 
 type ProductsTableProps = {
-    products: Product[]
+    products: ProductWithCategory
 }
 
 
