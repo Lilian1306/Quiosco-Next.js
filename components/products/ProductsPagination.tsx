@@ -21,6 +21,7 @@ export default function ProductsPagination({page, totalPages} : ProductsPaginati
             
            {pages.map(currentPage => ( // Pagina Actual
               <Link
+                key={currentPage}
                 href={`/admin/products?page=${currentPage}`}
                 className={`${page === currentPage ? 'font-black bg-amber-400' : 'bg-white'}' px-4 text-sm text-gray-900 ring-1 ring-insert ring-gray-300 focus:z-20 focu:outline-offset-0'`}
               >{currentPage}</Link>
