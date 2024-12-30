@@ -67,6 +67,7 @@ export default function ImageUpload({image}: {image:string | undefined}) {
                   fill
                   src={(image)}
                   alt="Imagen Producto"
+                  style={{objectFit: 'contain'}}
               />
                </div>
             </div>

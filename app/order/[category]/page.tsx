@@ -28,7 +28,7 @@ export default async function OrderPage({params} : {params: Promise<CategoryProp
      <Heading>
       Elige y personaliza tu pedido a continuacion
      </Heading>
-       <div className="grid grid-cols-1 lg:grid-colst-2 2xl:grid-cols-3 gap-4 items-center">
+       <div className="grid grid-cols-1  xl:grid-cols-2 2xl:grid-cols-4 gap-4 items-center">
             {products.map(product => (
               <ProductCard
                 key={product.id}
