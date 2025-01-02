@@ -9,14 +9,14 @@ export default function OrdersPage(){
      
     const url = '/orders/api'
     const fetcher = () => fetch(url).then(res => res.json()).then(data => data)
-    const { data, error, isLoading} = useSWR<OrderWithProducts[]>(url, fetcher, {
+    const { data, isLoading} = useSWR<OrderWithProducts[]>(url, fetcher, {
         refreshInterval: 60000,
         revalidateOnFocus: false
     })
     if (isLoading) return <p>Cargando... </p> 
     if (data) return (
         <>
-         <h1 className="text-center mt-20 text-6cl font-black">Ordenes Listas</h1>
+         <h1 className="text-center mt-20 text-6xl font-black">Ordenes Listas</h1>
 
          <Logo/>
 
