@@ -12,7 +12,7 @@ export default function ImageUpload({image}: {image:string | undefined}) {
         onSuccess={(result, { widget }) => {
           if(result.event === 'success') {
             widget.close()
-            // @ts-ignore
+             // @ts-expect-error: result.info may not have the secure_url property
             setImageUrl(result.info?.secure_url)
           }
         }}
@@ -33,7 +33,7 @@ export default function ImageUpload({image}: {image:string | undefined}) {
           <div className='space-y-2'>
             <label className='text-slate-800' >Image Producto</label>
             <div 
-               className='relative cursor-pointer hoever:opacity-701 transition p-10 border-neutral-300 flex flex-col justify-center items-center gap-4 text-neutral-600 bg-slate-100'
+               className='relative cursor-pointer hover:opacity-701 transition p-10 border-neutral-300 flex flex-col justify-center items-center gap-4 text-neutral-600 bg-slate-100'
                onClick={() => open()}
             > 
             <TbPhotoPlus 

@@ -16,6 +16,7 @@ export const useStore = create<Store>((set, get) => ({
     addToOrder: (product) => {
          
         const {categoryId, image, ...data } = product
+
         let order: OrderItem[] = []
         if(get().order.find(item => item.id === product.id)) {
             order = get().order.map( item => item.id === product.id ? {
